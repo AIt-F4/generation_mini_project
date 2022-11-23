@@ -1,3 +1,7 @@
+"""
+Author: Luca Tierney
+"""
+
 from simple_term_menu import TerminalMenu as menu
 from products import Product,products_names, products_list, export_products
 from couriers import Courier,courier_names,couriers_list, export_couriers 
@@ -63,6 +67,7 @@ def product_choices():
                 print(item._name,item._price)
         elif products_choice == '[3] Update a product':
             print('Which product would you like to update?')
+            os.system("clear")
             choice = menu(products_names, title = 'Products').show()
             products[choice].update_product()
         elif products_choice == '[4] Delete a Product':
@@ -91,7 +96,7 @@ def orders_choices():
             contents = []
             while True:
                 
-                contents_menu = products.copy()
+                contents_menu = products_names.copy()
                 contents_menu.append('[0] Quit')
                 contents_choice = contents_menu[menu(contents_menu, title = 'What is the contents of the order?').show()]
                 if contents_choice == '[0] Quit':
@@ -99,7 +104,7 @@ def orders_choices():
                 else:
                     contents.append(contents_choice)
                     print(contents)
-            courier = couriers[menu(couriers, title='Who is the courier for this order?').show()]
+            courier = couriers[menu(courier_names, title='Who is the courier for this order?').show()]
             new_order = Order(
                 input('What is the customers name?'),
                 input('What is the customers adress?'),
@@ -188,10 +193,10 @@ def export_choices():
     choice = menu(['Couriers','Products', 'Quit']).show()
     if choice == 0:
         print('Exporting couriers to couriers.csv')
-        export_couriers
+        export_couriers()
     elif choice == 1:
         print('Exporting products to products.csv')
-        export_products
+        export_products()
         
 
 #if its running from this file starts while loop

@@ -14,11 +14,15 @@
 * import from csv
 * customer list 
 * display orders by satus or courier
+* unit testing with dependancy injection
+* slight bug-fixing
   
 ## How were client requirements guaranteed?
-all features where tested to be working
+manual testing however no unit testing was done
 
 ## What would i improve
-products,couriers and orders as subclasses of a parent class as lots of code is repeated
+* products,couriers and orders as subclasses of a parent class as lots of code is repeated
+* unit testing
+* orders persisted
 ## Most fun
-needless use of decorators
+problem solving and needless use of decorators

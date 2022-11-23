@@ -1,5 +1,7 @@
 """
 contains product class and related functions
+classes: Products
+functions: import_products, export_products
 """
 
 from simple_term_menu import TerminalMenu as menu
@@ -47,7 +49,7 @@ def export_products():
         all_price.append(item['price'])
     dic_to_export = {'id':all_id,'name':all_name, 'price':all_price}
     dataframe = pandas.DataFrame(dic_to_export)
-    dataframe_csv = dataframe.to_csv('products.csv')    
+    dataframe_csv = dataframe.to_csv('data/products.csv')    
 
 
 #the class for all products

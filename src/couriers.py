@@ -38,7 +38,7 @@ def export_couriers():
         all_phone.append(item['phone'])
     dic_to_export = {'id':all_id,'name':all_name, 'price':all_phone}
     dataframe = pandas.DataFrame(dic_to_export)
-    dataframe_csv = dataframe.to_csv('couriers.csv')
+    dataframe_csv = dataframe.to_csv('data/couriers.csv')
 
 class Courier:
     def __init__(self,name, phone, courier_id= None):
@@ -115,3 +115,5 @@ for item in x:
 courier_names = []
 for item in couriers_list:
     courier_names.append(item._name)
+    
+export_couriers()
