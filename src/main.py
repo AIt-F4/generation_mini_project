@@ -1,5 +1,6 @@
 """
 Author: Luca Tierney
+functions: product_choices, orders_choices, couriers_choices,export_choices
 """
 
 from simple_term_menu import TerminalMenu as menu
@@ -64,7 +65,7 @@ def product_choices():
                 break
         elif products_choice == '[1] View all products':
             for item in products:
-                print(item._name,item._price)
+                print(item._name,item.price)
         elif products_choice == '[3] Update a product':
             print('Which product would you like to update?')
             os.system("clear")
@@ -122,24 +123,6 @@ def orders_choices():
                 count +=1
             print('Which order would you like to modify?')
             choice = menu(order_option, title = 'Orders').show()
-            # print('What would you like to update?')
-            # x = list(orders[choice].items())
-            # y = []
-            # for item in x:
-            #     y.append(item[0])
-            # choice2 = menu(y).show()
-            # if choice2 == 0:
-            #     orders[choice].update({'customer_name':input('What is the customers name?')})
-            #     print(orders[choice])
-            # elif choice2 == 1:
-            #     orders[choice].update({'cus_adress':input('What is the customers adress?')})
-            #     print(orders[choice])
-            # elif choice2 == 2:
-            #     orders[choice].update({'cus_phone':input('What is the customers phone?')})
-            #     print(orders[choice])
-            
-            #only allows orders to have certain statuses from a predetermined list
-            #elif choice2 ==3:
             status_menu = menu(statuses, title = 'Which status is the order?').show()
             new_status = statuses[status_menu]
             orders[choice].update({'status':new_status})
@@ -179,7 +162,7 @@ def couriers_choices():
             
         elif courier_choice == '[4] Delete a courier':
             print('Which courier would you like to delete?')
-            choice = menu(couriers, title = 'Couriers').show()
+            choice = menu(courier_names, title = 'Couriers').show()
             couriers[choice].delete_courier()
             del couriers[choice]
             del courier_names[choice]

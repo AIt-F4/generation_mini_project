@@ -155,7 +155,6 @@ class Product:
         takes self as its only arguement
         returns the price attribute formated in dollars
         """
-        print('getting price')
         
         return '${:,.2f}'.format(self._price)
     

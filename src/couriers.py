@@ -1,5 +1,7 @@
 """
 contains the courier class and all fuction related to them
+classes: Couriers
+function: import-couriers,export_couriers
 """
 
 import pymysql
@@ -7,6 +9,10 @@ from simple_term_menu import TerminalMenu as menu
 import pandas
 
 def import_couriers():
+    """
+    no arguements
+    imports the courier hone of
+    """
     connection = pymysql.connect(host='localhost', 
                                  user='root',password='password', 
                                  database ='mini_project', 
@@ -72,11 +78,11 @@ class Courier:
         choice =menu(options,title = 'What to update').show()
         if choice == 2:
             self._name = input('What is the new name for the courier?')
-            self._price = float(input('What is the new phone of the courier'))
+            self._phone = input('What is the new phone of the courier')
         elif choice == 0:
             self._name = input('What is the new name for the courier?') 
         elif choice == 1:
-            self._price = float(input('What is the new phone of the courier?'))
+            self._phone = input('What is the new phone of the courier?')
         connection = pymysql.connect(host='localhost', 
                                      user='root',password='password', 
                                      database ='mini_project', 
@@ -102,9 +108,23 @@ class Courier:
                 sql =f"DELETE FROM couriers WHERE id = {self.id}"
                 cursor.execute(sql)
             connection.commit()
-            
-
-
+    @property
+    def phone(self):
+        """
+        takes self as its only arguement
+        returns self._phone
+        """
+        return self._phone
+    @phone.setter
+    def phone(self,value):
+        """
+        takes self and value as its arguements
+        if a valid phone number sets the _phone attribute to it
+        else returns None
+        """ 
+        if len(value) != 11:
+            return None
+        self._phone = value
 
 
 x = import_couriers()
@@ -116,4 +136,4 @@ courier_names = []
 for item in couriers_list:
     courier_names.append(item._name)
     
-export_couriers()
+
